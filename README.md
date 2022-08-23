@@ -8,7 +8,7 @@ For the parser alone, please see https://github.com/760ceb3b9c0ba4872cadf3ce35a7
 - `Pillow` version 9.0.1 or greater
 
 # Installation
-> **Warning**
+> **Warning**  
 > Do not download using the "Download ZIP" button on the repository, as it does not clone submodules.
 
 - Clone the repository: `git clone https://github.com/760ceb3b9c0ba4872cadf3ce35a7a494/ipd-viewer --recurse-submodules`
