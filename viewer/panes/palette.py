@@ -135,7 +135,7 @@ class PalettePane(wx.Window):
         )
 
         font: wx.Font = self.info_label.GetFont()
-        font.SetPixelSize((0, 16 if platform.system() == "Darwin" else 13))
+        font.SetPixelSize((0, 16 if platform.system() == "Darwin" else 12))
         self.info_label.SetFont(font)
 
         self.sizer.Add(
