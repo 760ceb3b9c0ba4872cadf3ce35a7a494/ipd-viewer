@@ -147,7 +147,8 @@ class RootFrame(wx.Frame):
             if file_dialog.ShowModal() != wx.ID_OK:
                 raise UserCancelledException("User cancelled")
 
-        self.path = Path(file_dialog.GetPath())
+            self.path = Path(file_dialog.GetPath())
+        
         if self.load_image_from_ipd_path(self.path):
             self.apply_image()
             return True
