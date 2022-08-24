@@ -1,5 +1,5 @@
 # ipd-viewer
-Viewer for .ipd, an image format used in [iPod games](https://en.wikipedia.org/wiki/IPod_game).  
+Simple viewer for .ipd, an image format used in [iPod games](https://en.wikipedia.org/wiki/IPod_game). Supports exporting to PNG, JPEG, GIF and BMP.  
 For the parser alone, please see https://github.com/760ceb3b9c0ba4872cadf3ce35a7a494/ipd
 
 # Requirements
@@ -14,3 +14,7 @@ For the parser alone, please see https://github.com/760ceb3b9c0ba4872cadf3ce35a7
 - Clone the repository: `git clone https://github.com/760ceb3b9c0ba4872cadf3ce35a7a494/ipd-viewer --recurse-submodules`
 - Install requirements: `python3 -m pip install wxPython Pillow`
 - Run the `main.py` file: `python3 main.py`
+
+# Screenshots
+![](screenshots/mac-1.png)
+![](screenshots/windows-1.png)
