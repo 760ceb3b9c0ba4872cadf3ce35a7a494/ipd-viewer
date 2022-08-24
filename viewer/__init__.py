@@ -34,13 +34,6 @@ class RootFrame(wx.Frame):
         self.file_menu.Append(wx.ID_SAVE, "Export\tCtrl+E", "Open")
         self.menubar.Append(self.file_menu, "&File")
 
-        self.view_menu = wx.Menu()
-        self.view_menu.Append(wx.ID_ZOOM_IN, "Zoom In\tCtrl++", "Zoom in")
-        self.view_menu.Append(wx.ID_ZOOM_OUT, "Zoom Out\tCtrl+-", "Zoom out")
-        self.view_menu.Append(wx.ID_ZOOM_100, "Actual Size\tCtrl+0", "Zoom to actual size")
-        self.view_menu.AppendSeparator()
-        self.menubar.Append(self.view_menu, "&View")
-
         self.SetMenuBar(self.menubar)
         self.Bind(wx.EVT_MENU, self.menu_handler)
 
@@ -51,7 +44,8 @@ class RootFrame(wx.Frame):
         self.meta_panel = MetadataPane(self, select_callback=self.override_select_callback)
         self.palette_panel = PalettePane(self)
 
-        view_pane = wx.aui.AuiPaneInfo()\
+        self.panes = []
+        view_pane: wx.aui.AuiPaneInfo = wx.aui.AuiPaneInfo()\
             .Dock()\
             .Center()\
             .MinSize((320, 240))\
@@ -59,25 +53,36 @@ class RootFrame(wx.Frame):
             .CloseButton(False)\
             .Caption("Viewport")
 
-        meta_pane = wx.aui.AuiPaneInfo()\
+        meta_pane: wx.aui.AuiPaneInfo = wx.aui.AuiPaneInfo()\
             .Dock()\
             .Right()\
             .MinSize((208, 80))\
             .MaxSize((208, 80))\
             .BestSize((208, 80))\
             .FloatingSize((208, 99))\
+            .CloseButton(False)\
             .Caption("Metadata")
 
-        palette_pane = wx.aui.AuiPaneInfo()\
+        palette_pane: wx.aui.AuiPaneInfo = wx.aui.AuiPaneInfo()\
             .Dock()\
             .Right()\
             .MinSize((208, 245))\
             .MaxSize((208, 245))\
             .BestSize((208, 245))\
             .FloatingSize((208, 263))\
+            .CloseButton(False)\
             .Caption("Palette")
 
         palette_pane.dock_proportion = 1
+
+        self.panes.append(meta_pane)
+        self.panes.append(palette_pane)
+
+        self.view_menu = wx.Menu()
+        self.view_menu.Append(wx.ID_ZOOM_IN, "Zoom In\tCtrl++", "Zoom in")
+        self.view_menu.Append(wx.ID_ZOOM_OUT, "Zoom Out\tCtrl+-", "Zoom out")
+        self.view_menu.Append(wx.ID_ZOOM_100, "Actual Size\tCtrl+0", "Zoom to actual size")
+        self.menubar.Append(self.view_menu, "&View")
 
         self.mgr.AddPane(
             window=self.view_panel,
