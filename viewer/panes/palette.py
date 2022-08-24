@@ -1,4 +1,5 @@
 import math
+import platform
 from typing import Tuple, List
 
 import wx
@@ -134,7 +135,7 @@ class PalettePane(wx.Window):
         )
 
         font: wx.Font = self.info_label.GetFont()
-        font.SetPixelSize((0, 16))
+        font.SetPixelSize((0, 16 if platform.system() == "Darwin" else 13))
         self.info_label.SetFont(font)
 
         self.sizer.Add(
@@ -151,7 +152,7 @@ class PalettePane(wx.Window):
 
         info_sizer = wx.BoxSizer(wx.HORIZONTAL)
         info_sizer.Add(self.color_window, flag=wx.RIGHT, border=4)
-        info_sizer.Add(self.info_label)
+        info_sizer.Add(self.info_label, flag=wx.ALIGN_CENTER_VERTICAL)
 
         self.sizer.Add(
             sizer=info_sizer,
