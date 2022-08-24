@@ -31,7 +31,7 @@ class RootFrame(wx.Frame):
 
         self.file_menu = wx.Menu()
         self.file_menu.Append(wx.ID_OPEN, "Open\tCtrl+O", "Open")
-        self.file_menu.Append(wx.ID_SAVE, "Export\tCtrl+E", "Open")
+        self.file_menu.Append(wx.ID_SAVE, "Export\tCtrl+E", "Export")
         self.menubar.Append(self.file_menu, "&File")
 
         self.SetMenuBar(self.menubar)
@@ -134,12 +134,12 @@ class RootFrame(wx.Frame):
             ) as file_dialog:
                 if file_dialog.ShowModal() != wx.ID_OK:
                     return
-
-            file_format = (file_dialog.GetWildcard().split("|"))[1 + (file_dialog.GetFilterIndex() * 2)][2:]
-            self.image.save(
-                fp=file_dialog.GetPath(),
-                format=file_format
-            )
+                
+                file_format = (file_dialog.GetWildcard().split("|"))[1 + (file_dialog.GetFilterIndex() * 2)][2:]
+                self.image.save(
+                    fp=file_dialog.GetPath(),
+                    format=file_format
+                )
 
     def prompt_load_image(self):
         file_dialog: wx.FileDialog
