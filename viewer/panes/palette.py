@@ -146,7 +146,7 @@ class PalettePane(wx.Window):
         self.color_window = wx.Window(
             parent=self,
             size=(32, 32),
-            style=wx.SUNKEN_BORDER | wx.SHAPED
+            style=wx.BORDER_RAISED | wx.SHAPED
         )
 
         info_sizer = wx.BoxSizer(wx.HORIZONTAL)
